@@ -1,6 +1,6 @@
 package ec.edu.uce.pa.paquete;
 
-impoer jakarta.inject.Singleton;
+import jakarta.inject.Singleton;
 //@ApplicationScoped//delego el control al contendor ArC
 //@RequestScoped 
 @Singleton
