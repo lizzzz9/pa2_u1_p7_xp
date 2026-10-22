@@ -1,9 +1,9 @@
 package ec.edu.uce.pa.paquete;
 
-import jakarta.inject.Inject;
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
+import jakarta.inject.Inject;
 
 @QuarkusMain
 public class Main implements QuarkusApplication {
@@ -22,7 +22,7 @@ public class Main implements QuarkusApplication {
     @Override
     public int run(String... args) {
         System.out.println("Iniciando la aplicacion Quarkus...");
-        Pedido pedido = new Pedido("Juan Perez", "Laptop", 1500.00, "juan.perez@example.com"); 
+        Pedido pedido = new Pedido("Juan Perez", "juan.perez@example.com","Laptop","147852399", 1500.00); 
         this.pedidoService.realizar(pedido);
         Quarkus.waitForExit();
         return 0;

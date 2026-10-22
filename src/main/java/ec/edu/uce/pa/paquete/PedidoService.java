@@ -1,14 +1,19 @@
-
 package ec.edu.uce.pa.paquete;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @ApplicationScoped
 public class PedidoService {
 
     @Inject
-    private MailService mailService;
+    @Named("mail")
+    private Notificacion notificacionCorreo;
+    
+    @Inject
+     @Named("sms")
+    private Notificacion notificacionSMS;
 
     public void realizar(Pedido pedido) {
 
@@ -24,6 +29,8 @@ public class PedidoService {
                 + ", su pedido de " + pedido.getProducto()
                 + " ha sido procesado.";
 
-        mailService.enviar(pedido.getCorreo(), asunto, cuerpo);
+        this.notificacionCorreo.enviar(pedido.getCorreo(), cuerpo);
+
+        this.notificacionSMS.enviar(pedido.getTelefono(), cuerpo);
     }
 }
