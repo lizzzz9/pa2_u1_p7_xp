@@ -1,12 +1,18 @@
 package ec.edu.uce.pa.paquete;
 
 import ec.edu.uce.pa.paquete.Interceptors.Auditoria;
+import ec.edu.uce.pa.paquete.Interceptors.Email;
+import ec.edu.uce.pa.paquete.Interceptors.MedirTiempo;
+import ec.edu.uce.pa.paquete.Interceptors.SMS;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class PedidoService {
 
     @Auditoria
+    @MedirTiempo
+    @SMS
+    @Email
     public String realizar(Pedido pedido) {
         Long init  =System.currentTimeMillis();
         try {
