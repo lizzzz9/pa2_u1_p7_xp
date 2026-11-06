@@ -1,6 +1,8 @@
 package ec.edu.ec.pa2.paquete;
 
+import ec.edu.ec.pa2.paquete.Interceptors.ReintentarOperacion;
 import ec.edu.ec.pa2.paquete.Interceptors.TiempoEjecucion;
+import ec.edu.ec.pa2.paquete.Interceptors.ValidarStock;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -12,6 +14,8 @@ public class ReservaService {
 
     @Inject 
     private FacturacionService facturacionService;  
+    @ReintentarOperacion
+    @ValidarStock
     @TiempoEjecucion
     public Reserva procesarReserva(String cliente, double monto) {
         try {
